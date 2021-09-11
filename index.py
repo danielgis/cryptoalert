@@ -22,7 +22,7 @@ if response.status_code == 200:
     price = round(price, 3)
     timestamp_to_date = datetime.fromtimestamp(int(lastKey))
     timestamp_to_date = timestamp_to_date.strftime('%Y-%m-%d %H:%M:%S')
-    if price >= float(_PRICE_DESIRED):
+    if price <= float(_PRICE_DESIRED):
         body = f'Price ADA is ${price}, buy now!\n{timestamp_to_date}\n{_URL_BINANCE}\nDanielgis'
         client = Client(_ACCOUNT_SID, _AUTH_TOKEN)
         message = client.messages.create(body=body, from_=_FROM_NUMBER, to=_TO_NUMBER)
