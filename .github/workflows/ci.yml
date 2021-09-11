@@ -9,7 +9,7 @@ on:
 name: check_pricing
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
 
     steps:
       - name: checkout repo content
@@ -17,11 +17,11 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.7 #install the python needed
-      - name: install packages # run the run.py to get the latest data
+          python-version: 3.7 # install the python
+      - name: install packages # install packages
         run: |
           pip install --user twilio
-      - name: execute py script
+      - name: execute py script # running script
         run: |
           python index.py
         env:
