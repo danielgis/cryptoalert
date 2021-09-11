@@ -25,6 +25,7 @@ jobs:
         run: |
           python index.py
         env:
+          PRICE_DESIRED: ${{ secrets.PRICE_DESIRED }}
           MY_NUMBER: ${{ secrets.MY_NUMBER }}
           TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
           TWILIO_AUTH_TOKEN: ${{secrets.TWILIO_AUTH_TOKEN}}
