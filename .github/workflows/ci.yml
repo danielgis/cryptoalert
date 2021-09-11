@@ -1,26 +1,30 @@
-name: py
-  on:
-    schedule:
-      - cron: "*/10 * * * *" #runs at 00:00 UTC everyday
-  
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-  
-      steps:
-        - name: checkout repo content
-          uses: actions/checkout@v2 # checkout the repository content to github runner.
-        - name: setup python
-          uses: actions/setup-python@v2
-          with:
-            python-version: 3.7 #install the python needed
-        - name: install packages # run the run.py to get the latest data
-          run: |
-            pip install --user twilio
-        - name: execute py script
-          run: |
-            python index.py
-          env:
-            MY_NUMBER: ${{ secrets.MY_NUMBER }}
-            TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-            TWILIO_AUTH_TOKEN: ${{secrets.TWILIO_AUTH_TOKEN}}
+on:
+  push:
+    branches:
+      - master
+
+  schedule:
+    - cron: "*/10 * * * *"*"
+
+name: check_pricing
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7 #install the python needed
+      - name: install packages # run the run.py to get the latest data
+        run: |
+          pip install --user twilio
+      - name: execute py script
+        run: |
+          python index.py
+        env:
+          MY_NUMBER: ${{ secrets.MY_NUMBER }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{secrets.TWILIO_AUTH_TOKEN}}
