@@ -5,7 +5,7 @@ import os
 
 _URL_COINMARKETCAP = 'https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail/chart?id=2010&range=1D'
 _URL_BINANCE = 'https://www.binance.com/es-LA/buy-sell-crypto?channel=card&fiat=PEN'
-_PRICE_DESIRED = 2.3
+_PRICE_DESIRED = 5
 _ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
 _AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
 _FROM_NUMBER = 'whatsapp:+14155238886'
